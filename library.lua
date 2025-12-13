@@ -578,11 +578,11 @@ function library:window(properties)
 		while true do
 			if __holder.Visible then
 				for i = 1, #animated_text do
-					task.wait(0.2)
+					task.wait(0.095)
 					name.Text = animated_text[i]
 				end
 			end
-			task.wait(0.2)
+			task.wait(0.095)
 		end
 	end)
 	--
