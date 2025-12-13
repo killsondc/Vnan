@@ -527,6 +527,7 @@ function library:window(properties)
 		Size = UDim2.new(0, 0, 1, 0),
 		Position = UDim2.new(0, 8, 0, 0),
 		BackgroundTransparency = 1,
+		RichText = true,
 		TextXAlignment = Enum.TextXAlignment.Left,
 		BorderSizePixel = 0,
 		AutomaticSize = Enum.AutomaticSize.X,
