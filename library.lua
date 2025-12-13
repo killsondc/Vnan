@@ -11,7 +11,6 @@ local debris = game:GetService("Debris")
 local tween_service = game:GetService("TweenService")
 local rs = game:GetService("ReplicatedStorage")
 
-
 local vec2 = Vector2.new
 local vec3 = Vector3.new
 local dim2 = UDim2.new
@@ -399,10 +398,6 @@ function library:update_theme(theme, color)
 	themes.preset[theme] = color
 end
 
-function library:get_theme()
-	return themes.utility["outline"]["Color"]
-end
-
 function library:connection(signal, callback)
 	local connection = signal:Connect(callback)
 
@@ -433,11 +428,11 @@ library.gui = library:create("ScreenGui", {
 -- library functions
 function library:window(properties)
 	local cfg = {
-		name = properties.Name or properties.name or properties.Title or properties.title or "JuneVideo?",
+		name = properties.Name or properties.name or properties.Title or properties.title or "sp4m.wtf",
 		size = properties.Size or properties.size or dim2(0, 500, 0, 650),
 	}
 
-	local animated_text = library:animation("	".. cfg.name .. " | public	")
+	local animated_text = library:animation(cfg.name .. " | private")
 
 	-- watermark
 	local __holder = library:create("Frame", {
@@ -532,12 +527,21 @@ function library:window(properties)
 		Size = UDim2.new(0, 0, 1, 0),
 		Position = UDim2.new(0, 8, 0, 0),
 		BackgroundTransparency = 1,
-		RichText = true,
 		TextXAlignment = Enum.TextXAlignment.Left,
 		BorderSizePixel = 0,
 		AutomaticSize = Enum.AutomaticSize.X,
 		TextSize = 12,
 		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+	})
+
+	local TEXT_ANIMATION_GRADIENT = library:create("UIGradient", {
+		Parent = name,
+		Name = "",
+		Color = ColorSequence.new({
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+			ColorSequenceKeypoint.new(0.01, themes.preset.accent),
+			ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255)),
+		}),
 	})
 
 	local UIPadding = library:create("UIPadding", {
@@ -569,11 +573,11 @@ function library:window(properties)
 		while true do
 			if __holder.Visible then
 				for i = 1, #animated_text do
-					task.wait(0.105)
+					task.wait(0.2)
 					name.Text = animated_text[i]
 				end
 			end
-			task.wait(0.105)
+			task.wait(0.2)
 		end
 	end)
 	--
@@ -669,17 +673,15 @@ function library:window(properties)
 
 	library:apply_theme(accent_line, "accent", "BackgroundColor3")
 
-	
 	local name = library:create("TextLabel", {
 		Parent = inline1,
 		Name = "",
 		FontFace = library.font,
 		TextColor3 = Color3.fromRGB(170, 170, 170),
 		BorderColor3 = Color3.fromRGB(0, 0, 0),
+		Text = cfg.name,
 		TextStrokeTransparency = 0.5,
 		BorderSizePixel = 0,
-		RichText = true,
-		Text = cfg.name,
 		BackgroundTransparency = 1,
 		Position = UDim2.new(0, 0, 0, -1),
 		Size = UDim2.new(1, 0, 0, 1),
@@ -728,7 +730,21 @@ function library:window(properties)
 		BackgroundColor3 = Color3.fromRGB(40, 40, 40),
 	})
 
+	task.spawn(function()
+		while true do
+			if flags["color_picker_anim_speed"] then
+				library.sin = math.abs(math.sin(tick() * flags["color_picker_anim_speed"]))
 
+				TEXT_ANIMATION_GRADIENT.Color = ColorSequence.new({
+					ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+					ColorSequenceKeypoint.new(math.abs(math.sin(tick())), themes.preset.accent),
+					ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255)),
+				})
+			end
+			task.wait()
+		end
+	end)
+	--
 
 	-- esp preview
 	local esp_preview = library:create("Frame", {
@@ -2208,7 +2224,7 @@ function library:window(properties)
 	end
 
 	function cfg.toggle_playerlist(bool)
-		playerlist.Visible = false
+		playerlist.Visible = bool
 	end
 
 	function cfg.toggle_watermark(bool)
@@ -4575,7 +4591,7 @@ function library:colorpicker(properties)
 
 	rainbow.MouseButton1Down:Connect(function()
 		selected.BackgroundTransparency = 1
-		selected = rainbow
+		selected = "rainbow"
 		rainbow.BackgroundTransparency = 0
 
 		flags[cfg.flag]["animation"] = "rainbow"
@@ -4584,7 +4600,7 @@ function library:colorpicker(properties)
 
 	fade_alpha.MouseButton1Down:Connect(function()
 		selected.BackgroundTransparency = 1
-		selected = fade_alpha
+		selected = "fade_alpha"
 		fade_alpha.BackgroundTransparency = 0
 
 		flags[cfg.flag]["animation"] = "fade_alpha"
@@ -4593,7 +4609,7 @@ function library:colorpicker(properties)
 
 	fade.MouseButton1Down:Connect(function()
 		selected.BackgroundTransparency = 1
-		selected = fade
+		selected = "fade"
 		fade.BackgroundTransparency = 0
 
 		flags[cfg.flag]["animation"] = "fade"
@@ -4602,7 +4618,7 @@ function library:colorpicker(properties)
 
 	normal.MouseButton1Down:Connect(function()
 		selected.BackgroundTransparency = 1
-		selected = normal
+		selected = "normal"
 		normal.BackgroundTransparency = 0
 
 		flags[cfg.flag]["animation"] = "normal"
