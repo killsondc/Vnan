@@ -535,16 +535,6 @@ function library:window(properties)
 		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 	})
 
-	local TEXT_ANIMATION_GRADIENT = library:create("UIGradient", {
-		Parent = name,
-		Name = "",
-		Color = ColorSequence.new({
-			ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
-			ColorSequenceKeypoint.new(0.01, themes.preset.accent),
-			ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255)),
-		}),
-	})
-
 	local UIPadding = library:create("UIPadding", {
 		Parent = tabs,
 		Name = "",
@@ -732,21 +722,7 @@ function library:window(properties)
 		BackgroundColor3 = Color3.fromRGB(40, 40, 40),
 	})
 
-	task.spawn(function()
-		while true do
-			if flags["color_picker_anim_speed"] then
-				library.sin = math.abs(math.sin(tick() * flags["color_picker_anim_speed"]))
 
-				TEXT_ANIMATION_GRADIENT.Color = ColorSequence.new({
-					ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
-					ColorSequenceKeypoint.new(math.abs(math.sin(tick())), themes.preset.accent),
-					ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255)),
-				})
-			end
-			task.wait()
-		end
-	end)
-	--
 
 	-- esp preview
 	local esp_preview = library:create("Frame", {
