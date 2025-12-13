@@ -4566,7 +4566,7 @@ function library:colorpicker(properties)
 	end)
 
 	cfg.saved_color = hsv(h, s, v)
-	local selected = normal
+	local selected = "normal"
 	flags[cfg.flag]["animation"] = "normal"
 
 	rainbow.MouseButton1Down:Connect(function()
@@ -4578,6 +4578,14 @@ function library:colorpicker(properties)
 		cfg.saved_color = hsv(s, s, v)
 	end)
 
+	fade_alpha.MouseButton1Down:Connect(function()
+		selected.BackgroundTransparency = 1
+		selected = "fade_alpha"
+		fade_alpha.BackgroundTransparency = 0
+
+		flags[cfg.flag]["animation"] = "fade_alpha"
+		cfg.saved_color = hsv(s, s, v)
+	end)
 
 	fade.MouseButton1Down:Connect(function()
 		selected.BackgroundTransparency = 1
