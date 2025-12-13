@@ -429,7 +429,7 @@ library.gui = library:create("ScreenGui", {
 -- library functions
 function library:window(properties)
 	local cfg = {
-		name = properties.Name or properties.name or properties.Title or properties.title or "JuneVideo",
+		name = properties.Name or properties.name or properties.Title or properties.title or "JuneVideo?",
 		size = properties.Size or properties.size or dim2(0, 500, 0, 650),
 	}
 
@@ -665,7 +665,7 @@ function library:window(properties)
 
 	library:apply_theme(accent_line, "accent", "BackgroundColor3")
 
-	local stringtest = "June<font color='100, 100, 255'> %s </font>"
+	
 	local name = library:create("TextLabel", {
 		Parent = inline1,
 		Name = "",
@@ -675,12 +675,12 @@ function library:window(properties)
 		TextStrokeTransparency = 0.5,
 		BorderSizePixel = 0,
 		RichText = true,
+		Text = cfg.name,
 		BackgroundTransparency = 1,
 		Position = UDim2.new(0, 0, 0, -1),
 		Size = UDim2.new(1, 0, 0, 1),
 		ZIndex = 2,
 		TextSize = 12,
-		Text = string.format(stringtest, "Video"),
 		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 	})
 
