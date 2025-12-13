@@ -398,6 +398,10 @@ function library:update_theme(theme, color)
 	themes.preset[theme] = color
 end
 
+function library:getaccent()
+	return themes.preset.accent
+end
+
 function library:connection(signal, callback)
 	local connection = signal:Connect(callback)
 
@@ -428,11 +432,11 @@ library.gui = library:create("ScreenGui", {
 -- library functions
 function library:window(properties)
 	local cfg = {
-		name = properties.Name or properties.name or properties.Title or properties.title or "sp4m.wtf",
+		name = properties.Name or properties.name or properties.Title or properties.title or "JuneVideo",
 		size = properties.Size or properties.size or dim2(0, 500, 0, 650),
 	}
 
-	local animated_text = library:animation(cfg.name .. " | private")
+	local animated_text = library:animation(cfg.name .. " | public")
 
 	-- watermark
 	local __holder = library:create("Frame", {
