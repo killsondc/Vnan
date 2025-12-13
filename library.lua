@@ -10,7 +10,7 @@ local coregui = game:GetService("CoreGui")
 local debris = game:GetService("Debris")
 local tween_service = game:GetService("TweenService")
 local rs = game:GetService("ReplicatedStorage")
-local stringtest = "June<font color='"themes"'> %s </font>"
+
 
 local vec2 = Vector2.new
 local vec3 = Vector3.new
@@ -429,7 +429,7 @@ library.gui = library:create("ScreenGui", {
 -- library functions
 function library:window(properties)
 	local cfg = {
-		name = properties.Name or properties.name or properties.Title or properties.title or string.format(stringtest, "Video"),
+		name = properties.Name or properties.name or properties.Title or properties.title or "JuneVideo",
 		size = properties.Size or properties.size or dim2(0, 500, 0, 650),
 	}
 
@@ -665,7 +665,7 @@ function library:window(properties)
 
 	library:apply_theme(accent_line, "accent", "BackgroundColor3")
 
-	
+	local stringtest = "June<font color='"themes.preset.accent"'> %s </font>"
 	local name = library:create("TextLabel", {
 		Parent = inline1,
 		Name = "",
