@@ -399,6 +399,10 @@ function library:update_theme(theme, color)
 	themes.preset[theme] = color
 end
 
+function library:get_theme()
+	return themes.utility["outline"]["Color"]
+end
+
 function library:connection(signal, callback)
 	local connection = signal:Connect(callback)
 
