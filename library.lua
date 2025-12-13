@@ -2226,7 +2226,7 @@ function library:window(properties)
 	end
 
 	function cfg.toggle_playerlist(bool)
-		playerlist.Visible = bool
+		playerlist.Visible = false
 	end
 
 	function cfg.toggle_watermark(bool)
