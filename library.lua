@@ -432,7 +432,7 @@ function library:window(properties)
 		size = properties.Size or properties.size or dim2(0, 500, 0, 650),
 	}
 
-	local animated_text = library:animation(cfg.name .. " | public     ")
+	local animated_text = library:animation("	".. cfg.name .. " | public	")
 
 	-- watermark
 	local __holder = library:create("Frame", {
@@ -574,11 +574,11 @@ function library:window(properties)
 		while true do
 			if __holder.Visible then
 				for i = 1, #animated_text do
-					task.wait(0.2)
+					task.wait(0.105)
 					name.Text = animated_text[i]
 				end
 			end
-			task.wait(0.2)
+			task.wait(0.105)
 		end
 	end)
 	--
@@ -683,6 +683,7 @@ function library:window(properties)
 		Text = cfg.name,
 		TextStrokeTransparency = 0.5,
 		BorderSizePixel = 0,
+		RichText = true,
 		BackgroundTransparency = 1,
 		Position = UDim2.new(0, 0, 0, -1),
 		Size = UDim2.new(1, 0, 0, 1),
