@@ -663,14 +663,14 @@ function library:window(properties)
 	})
 
 	library:apply_theme(accent_line, "accent", "BackgroundColor3")
-
+	local ArgTest = "June<font color='"themes"'> %s </font>"
+	
 	local name = library:create("TextLabel", {
 		Parent = inline1,
 		Name = "",
 		FontFace = library.font,
 		TextColor3 = Color3.fromRGB(170, 170, 170),
 		BorderColor3 = Color3.fromRGB(0, 0, 0),
-		Text = cfg.name,
 		TextStrokeTransparency = 0.5,
 		BorderSizePixel = 0,
 		RichText = true,
@@ -679,6 +679,8 @@ function library:window(properties)
 		Size = UDim2.new(1, 0, 0, 1),
 		ZIndex = 2,
 		TextSize = 12,
+		Text = cfg.name,
+		string.format(ArgTest, "Video")
 		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 	})
 
