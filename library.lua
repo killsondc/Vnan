@@ -4656,14 +4656,14 @@ function library:colorpicker(properties)
 
 	task.spawn(function()
 		while true do
-			if tostring(selected) ~= "normal" then
+			if selected ~= normal then
 				cfg.set(
 					hsv(
-						tostring(selected) == "rainbow" and library.sin or h,
-						tostring(selected) == "rainbow" and 1 or s,
-						tostring(selected) == "fade" and library.sin or v
+						selected == rainbow and library.sin or h,
+						selected == rainbow and 1 or s,
+						selected == fade and library.sin or v
 					),
-					selected == tostring("fade_alpha") and library.sin
+					selected == fade_alpha  and library.sin
 				)
 			end
 			task.wait()
