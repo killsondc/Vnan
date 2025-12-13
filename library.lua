@@ -436,7 +436,7 @@ function library:window(properties)
 		size = properties.Size or properties.size or dim2(0, 500, 0, 650),
 	}
 
-	local animated_text = library:animation(cfg.name .. " | public")
+	local animated_text = library:animation("	".. cfg.name .. " |	public	")
 
 	-- watermark
 	local __holder = library:create("Frame", {
