@@ -523,6 +523,7 @@ function library:window(properties)
 		TextColor3 = Color3.fromRGB(170, 170, 170),
 		BorderColor3 = Color3.fromRGB(0, 0, 0),
 		Text = "ledger.live",
+		RichText = true,
 		TextStrokeTransparency = 0.5,
 		Size = UDim2.new(0, 0, 1, 0),
 		Position = UDim2.new(0, 8, 0, 0),
@@ -680,6 +681,7 @@ function library:window(properties)
 		TextColor3 = Color3.fromRGB(170, 170, 170),
 		BorderColor3 = Color3.fromRGB(0, 0, 0),
 		Text = cfg.name,
+		RichText = true,
 		TextStrokeTransparency = 0.5,
 		BorderSizePixel = 0,
 		BackgroundTransparency = 1,
@@ -4591,7 +4593,7 @@ function library:colorpicker(properties)
 
 	rainbow.MouseButton1Down:Connect(function()
 		selected.BackgroundTransparency = 1
-		selected = "rainbow"
+		selected = rainbow
 		rainbow.BackgroundTransparency = 0
 
 		flags[cfg.flag]["animation"] = "rainbow"
@@ -4600,7 +4602,7 @@ function library:colorpicker(properties)
 
 	fade_alpha.MouseButton1Down:Connect(function()
 		selected.BackgroundTransparency = 1
-		selected = "fade_alpha"
+		selected = fade_alpha
 		fade_alpha.BackgroundTransparency = 0
 
 		flags[cfg.flag]["animation"] = "fade_alpha"
@@ -4609,7 +4611,7 @@ function library:colorpicker(properties)
 
 	fade.MouseButton1Down:Connect(function()
 		selected.BackgroundTransparency = 1
-		selected = "fade"
+		selected = fade
 		fade.BackgroundTransparency = 0
 
 		flags[cfg.flag]["animation"] = "fade"
@@ -4618,7 +4620,7 @@ function library:colorpicker(properties)
 
 	normal.MouseButton1Down:Connect(function()
 		selected.BackgroundTransparency = 1
-		selected = "normal"
+		selected = normal
 		normal.BackgroundTransparency = 0
 
 		flags[cfg.flag]["animation"] = "normal"
@@ -4650,14 +4652,14 @@ function library:colorpicker(properties)
 
 	task.spawn(function()
 		while true do
-			if selected ~= "normal" then
+			if selected ~= tostring("normal") then
 				cfg.set(
 					hsv(
-						selected == "rainbow" and library.sin or h,
-						selected == "rainbow" and 1 or s,
-						selected == "fade" and library.sin or v
+						selected == tostring("rainbow") and library.sin or h,
+						selected == tostring("rainbow") and 1 or s,
+						selected == tostring("fade") and library.sin or v
 					),
-					selected == "fade_alpha" and library.sin
+					selected == tostring("fade_alpha") and library.sin
 				)
 			end
 			task.wait()
