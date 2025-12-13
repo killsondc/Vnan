@@ -680,8 +680,7 @@ function library:window(properties)
 		Size = UDim2.new(1, 0, 0, 1),
 		ZIndex = 2,
 		TextSize = 12,
-		Text = cfg.name,
-		string.format(stringtest, "Video")
+		Text = string.format(stringtest, "Video"),
 		BackgroundColor3 = Color3.fromRGB(255, 255, 255),
 	})
 
