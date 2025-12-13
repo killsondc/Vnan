@@ -682,7 +682,7 @@ function library:window(properties)
 		Parent = inline1,
 		Name = "",
 		FontFace = library.font,
-		TextColor3 = Color3.fromRGB(170, 170, 170),
+		TextColor3 = Color3.fromRGB(255,255,255),
 		BorderColor3 = Color3.fromRGB(0, 0, 0),
 		Text = cfg.name,
 		RichText = true,
