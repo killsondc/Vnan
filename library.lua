@@ -665,7 +665,7 @@ function library:window(properties)
 
 	library:apply_theme(accent_line, "accent", "BackgroundColor3")
 
-	local stringtest = "June<font color='"themes.preset.accent"'> %s </font>"
+	local stringtest = "June<font color='100, 100, 255'> %s </font>"
 	local name = library:create("TextLabel", {
 		Parent = inline1,
 		Name = "",
