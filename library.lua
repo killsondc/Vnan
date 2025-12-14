@@ -335,8 +335,10 @@ function library:config_list_update()
 	local list = {}
 
 	for idx, file in next, listfiles(library.directory .. "/configs") do
-		local name = file.split(file, "/configs/")[2]
-		name = name.split(name, ".cfg")[1]
+		
+		local cname = file.split(file, "/configs/")[2]
+		print(cname)
+		local name = cname.split(name, ".cfg")[1]
 		table.insert(list, name)
 	end
 
