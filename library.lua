@@ -336,9 +336,8 @@ function library:config_list_update()
 
 	for idx, file in next, listfiles(library.directory .. "/configs") do
 		
-		local name = file.split(file, "/configs/")
-		 name = name.split(name, ".cfg")
-		table.insert(list, name)
+		
+		table.insert(list, file)
 	end
 
 	library.config_holder:refresh_options(list)
