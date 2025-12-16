@@ -5243,7 +5243,7 @@ function library:panel(properties)
 	local panel_main_frame = library:create("Frame", {
 		Parent = library.gui,
 		Name = "",
-		BackgroundTransparency = 0.4000000059604645,
+		BackgroundTransparency = 1,
 		Size = UDim2.new(1, 0, 1, 0),
 		BorderColor3 = Color3.fromRGB(0, 0, 0),
 		ZIndex = 3,
